@@ -17,5 +17,6 @@ class FeedbackRepository
 
 		$factory->save('db');
 		$factory->save('email');
+		//$factory->save('file');
 	}
 }
