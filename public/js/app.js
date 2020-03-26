@@ -37361,12 +37361,29 @@ var render = function() {
         _c("label", { attrs: { for: "name" } }, [_vm._v("Имя")]),
         _vm._v(" "),
         _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields.name,
+              expression: "fields.name"
+            }
+          ],
           staticClass: "form-control",
           attrs: {
             type: "text",
             id: "name",
             name: "name",
             placeholder: "Иван Федоров"
+          },
+          domProps: { value: _vm.fields.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "name", $event.target.value)
+            }
           }
         }),
         _vm._v(" "),
@@ -37386,6 +37403,14 @@ var render = function() {
         _c("label", { attrs: { for: "phone" } }, [_vm._v("Телефон")]),
         _vm._v(" "),
         _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields.phone,
+              expression: "fields.phone"
+            }
+          ],
           staticClass: "form-control",
           attrs: {
             type: "text",
@@ -37393,17 +37418,26 @@ var render = function() {
             name: "phone",
             "aria-describedby": "phoneHelp",
             placeholder: "+7 (___) ___-__-__"
+          },
+          domProps: { value: _vm.fields.phone },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "phone", $event.target.value)
+            }
           }
         }),
         _vm._v(" "),
-        _vm.errors && _vm.errors.email
+        _vm.errors && _vm.errors.phone
           ? _c(
               "small",
               {
                 staticClass: "form-text text-danger",
                 attrs: { id: "phoneHelp" }
               },
-              [_vm._v(_vm._s(_vm.errors.email[0]))]
+              [_vm._v(_vm._s(_vm.errors.phone[0]))]
             )
           : _vm._e()
       ]),
@@ -37412,8 +37446,25 @@ var render = function() {
         _c("label", { attrs: { for: "message" } }, [_vm._v("Сообщение")]),
         _vm._v(" "),
         _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields.message,
+              expression: "fields.message"
+            }
+          ],
           staticClass: "form-control",
-          attrs: { id: "message", name: "message", rows: "3" }
+          attrs: { id: "message", name: "message", rows: "3" },
+          domProps: { value: _vm.fields.message },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "message", $event.target.value)
+            }
+          }
         }),
         _vm._v(" "),
         _vm.errors && _vm.errors.message
