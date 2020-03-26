@@ -2,17 +2,17 @@
     <form @submit.prevent="submit">
         <div class="form-group">
             <label for="name">Имя</label>
-            <input type="text" class="form-control" id="name" name="name" v-model="fields.name" placeholder="Иван Федоров">
+            <input type="text" class="form-control" :class="{ 'is-invalid': errors && errors.name }" id="name" name="name" v-model="fields.name" placeholder="Иван Федоров">
             <small v-if="errors && errors.name" id="nameHelp" class="form-text text-danger">{{ errors.name[0] }}</small>
         </div>
         <div class="form-group">
             <label for="phone">Телефон</label>
-            <input type="text" class="form-control" id="phone" name="phone" v-model="fields.phone" aria-describedby="phoneHelp" placeholder="+7 (___) ___-__-__">
+            <input type="text" class="form-control" :class="{ 'is-invalid': errors && errors.phone }" id="phone" name="phone" v-model="fields.phone" aria-describedby="phoneHelp" placeholder="+7 (___) ___-__-__">
             <small v-if="errors && errors.phone" id="phoneHelp" class="form-text text-danger">{{ errors.phone[0] }}</small>
         </div>
         <div class="form-group">
             <label for="message">Сообщение</label>
-            <textarea class="form-control" id="message" name="message" v-model="fields.message" rows="3"></textarea>
+            <textarea class="form-control" :class="{ 'is-invalid': errors && errors.message }" id="message" name="message" v-model="fields.message" rows="3"></textarea>
             <small v-if="errors && errors.message" id="messageHelp" class="form-text text-danger">{{ errors.message[0] }}</small>
         </div>
         <button type="submit" class="btn btn-primary">Отправить</button>

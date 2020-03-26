@@ -37370,6 +37370,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
+          class: { "is-invalid": _vm.errors && _vm.errors.name },
           attrs: {
             type: "text",
             id: "name",
@@ -37412,6 +37413,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
+          class: { "is-invalid": _vm.errors && _vm.errors.phone },
           attrs: {
             type: "text",
             id: "phone",
@@ -37455,6 +37457,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
+          class: { "is-invalid": _vm.errors && _vm.errors.message },
           attrs: { id: "message", name: "message", rows: "3" },
           domProps: { value: _vm.fields.message },
           on: {

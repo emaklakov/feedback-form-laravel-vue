@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Feedback;
 
+use App\Helpers\HelperChecks;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
 
 class SubmitFeedback extends FormRequest
 {
@@ -23,9 +25,17 @@ class SubmitFeedback extends FormRequest
      */
     public function rules()
     {
+		Validator::extend('phone_number', function($attribute, $value, $parameters) {
+			return HelperChecks::isPhoneNumber($value);
+		});
+
+		Validator::replacer('phone_number', function($message, $attribute, $rule, $parameters) {
+			return 'Номер должен начинаться на +7 или 8.';
+		});
+
 		$rules = [
 			'name' => ['required', 'string', 'max:255'],
-			'phone' => ['required', 'string', 'max:255'],
+			'phone' => ['required', 'string', 'min:11', 'max:255', 'phone_number'],
 			'message' => ['required', 'string', 'max:255'],
 		];
 
