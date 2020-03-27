@@ -10,11 +10,7 @@ use App\Models\Feedbacks\FeedbackEmail;
 
 class FeedbackFactory
 {
-	public $name;
-	public $phone;
-	public $message;
-
-	public function makeFeedback($type_save): Feedback
+	public static function makeFeedback($type_save): Feedback
 	{
 		switch ($type_save) {
 			case 'db':
